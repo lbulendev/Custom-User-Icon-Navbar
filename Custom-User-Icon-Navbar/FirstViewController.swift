@@ -12,28 +12,27 @@ class FirstViewController: UIViewController, UIGestureRecognizerDelegate {
     
     init () {
         super.init(nibName: nil, bundle: nil)
-//        self.view.backgroundColor = UIColor.orangeColor()
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     override func viewDidLoad() {        
         let userPhoto = UserIconView()
-        userPhoto.frame = CGRectMake(10, 20, 64, 44);
-        let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.userProfileButton(_:)))
+        userPhoto.frame = CGRect(x:10.0, y:20.0, width:64.0, height:44.0);
+        let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.userProfileButton))
         tap.delegate = self
         userPhoto.addGestureRecognizer(tap)
 
         self.navigationController?.view.addSubview(userPhoto)
     }
     
-    func userProfileButton(let sender : UIButton) {
+    @objc func userProfileButton(sender : UIButton) {
         print("test button")
     }
 }
